@@ -1,0 +1,30 @@
+{% extends 'pics/layout.html' %}
+{% load static %}
+
+{% block content %}
+{% for post in latest_post %}
+<div class="container">
+    <div class="row">
+        <div class="col align-self-start"></div>
+        <div class="col align-self-center" style="margin-top: 6%">
+            <div class = "text-center">
+            <h4>{{ post.title }}</h4>
+            <h6>{{ post.text_body|safe|linebreaks }}</h6> 
+                </div>
+                <br>
+            <img src ="{{ post.picture }}">
+            <nav aria-label="Page navigation example"><br>
+                    <ul class="pagination justify-content-center">
+                        <a class="page-link" href="/detail/{{post.get_previous_by_pub_date.slug}}" tabindex="-1" style="color:black">Previous</a>
+                    </ul>
+                  </nav>
+        </div>
+        <div class="col align-self-end"></div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+{% endblock %}
